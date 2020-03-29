@@ -17,3 +17,18 @@
 .img-svg {
     width: 100vw;
 }
+
+.profile-img {
+    width: 50%;
+    border-radius: 20px;
+}
+
+#social .fa {
+    font-size: 45px;
+    color: #000;
+    text-decoration: none;
+}
+
+#social .fa:hover {
+    color: #F50057;
+}
