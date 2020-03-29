@@ -1,0 +1,19 @@
+#home a {
+    text-decoration: none;
+    color: #F50057;
+}
+
+.bottom-img {
+    width: 100%;
+}
+
+#features {
+    height: 80vh;
+    width: 100vw;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.img-svg {
+    width: 100vw;
+}

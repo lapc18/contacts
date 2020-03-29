@@ -4,4 +4,55 @@
 html, 
 body {
     overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+
+.bg-primary-red {
+    background-color: #F50057;
+}
+
+
+.btn-outline-primary {
+    color: #F50057 !important;
+    border-color: #F50057 !important;
+}
+
+.btn-outline-primary:hover {
+    color: #fff !important;
+    background-color: #F50057 !important;
+    border-color: #F50057 !important;
+}
+
+.svg-img {
+    overflow-x: hidden;
+}
+
+
+.fa {
+    font-size: 100px;
+}
+
+.display-title::after {
+    content: '';
+    background: #fff;
+    height: 10px;
+    width: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    display: block;
+    transform: translateY(8px);
+}
+
+.display-title::before {
+    content: '';
+    background: #fff;
+    height: 5px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transform: translateY(63px);
 }
