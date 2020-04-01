@@ -1,0 +1,40 @@
+#navbar {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar {
+    padding: 0 !important;
+    background-color: transparent;
+}
+
+.navbar-brand {
+    padding: 10px;
+}
+
+.navbar-brand p{
+    font-size: 18px;
+}
+
+.navbar-nav li {
+    padding: 0 10px;
+}
+
+.navbar-nav li a {
+    font-weight: bold;
+    float: right;
+    text-align: left;
+}
+
+.navbar-nav li a:hover {
+    color: #F50057;
+}
+
+.navbar-toggler {
+    outline: none !important;
+}
+
+.text-red {
+    color: #F50057;
+}
