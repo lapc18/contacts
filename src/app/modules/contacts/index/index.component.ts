@@ -42,7 +42,6 @@ export class IndexComponent implements OnInit {
         res => {
           console.log(res);
           this.list = res;
-          console.log(res);
         },
         err => {
           console.log(err);

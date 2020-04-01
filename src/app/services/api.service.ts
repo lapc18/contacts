@@ -39,6 +39,7 @@ export class ApiService {
   
 
   fetchContacts(email:string, token:string): Observable<Contact[]> {
+    console.log(email, token);
     this.httpHeaders = new HttpHeaders({
       'Authorization':`Bearer ${token}`
     });

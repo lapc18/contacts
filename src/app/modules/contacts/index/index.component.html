@@ -7,7 +7,7 @@
     </div>
 
     <div class="justify-content-center">
-        <table class="table" *ngIf="list.length > 0">
+        <table class="table" *ngIf="list">
             <thead>
                 <th>Phone Number</th>
                 <th>Name</th>
@@ -19,13 +19,13 @@
                     <td>{{ item.firstName }}</td>
                     <td>{{ item.lastName }}</td>
                     <td>
-                        <button class="btn btn-outline-dark">Edit</button>
-                        <button class="btn btn-outline-dark">Delete</button>
+                        <button class="btn btn-outline-dark col-md-6">Edit</button>
+                        <button class="btn btn-outline-dark col-md-6">Delete</button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <div class="text-center" *ngIf="!list || list.length === 0">
+        <div class="text-center" *ngIf="!list">
             <p class="display-4">No contacts added yet...</p>
             <img src="../../../../assets/empty.svg" alt="" class="svg-img">
         </div>
