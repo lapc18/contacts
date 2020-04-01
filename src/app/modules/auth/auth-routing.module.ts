@@ -1,11 +1,10 @@
-import { WelcomeComponent } from './../../components/welcome/welcome.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: WelcomeComponent},
+  { path: '', redirectTo: 'signin', pathMatch: 'full'},
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
 ];

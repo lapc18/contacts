@@ -19,7 +19,11 @@
                     <button (click)="onSignIn()" [disabled]="!signinForm.valid" class="btn btn-outline-primary float-right col-md-4">Sign-In</button>
                 </form>
             </div>
+            <div class="text-center p-3">
+                <h3 class="lead">Don't have an account? <a routerLink="/auth/signup" target="_blank">Create one!</a></h3>
+            </div>
         </div>
+        
     </div>
 </div>
 <div class="m-0">

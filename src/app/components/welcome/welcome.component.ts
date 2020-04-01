@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as AOS from 'aos';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -8,10 +8,13 @@ import * as AOS from 'aos';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    AOS.init();
+  }
+ 
+  navigateToSignin(): void {
+    this.router.navigate(['/auth/signin']);
   }
 
 }
