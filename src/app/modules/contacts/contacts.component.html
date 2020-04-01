@@ -12,19 +12,19 @@
     <div class="collapse navbar-collapse pr-5 animated bounceInLeft" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" data-scroll href="#home">Home</a>
+                <a class="nav-link fa fa-home" routerLink="contacts/index"></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-scroll href="#features">Features</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-scroll href="#about">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-scroll href="#social">Social Networks</a>
+                <a class="nav-link fa fa-sign-out" data-scroll href="#social"></a>
             </li>
         </ul>
     </div>
 </nav>
 
 
+<router-outlet> </router-outlet>
+
+
+<div class="pt-5">
+    <app-footer> </app-footer>
+</div>

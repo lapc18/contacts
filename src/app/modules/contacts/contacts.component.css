@@ -1,5 +1,5 @@
 #navbar {
-    position: fixed;
+    position: sticky;
     top: 0;
     z-index: 10;
 }
@@ -37,4 +37,8 @@
 
 .text-red {
     color: #F50057;
+}
+
+nav .fa {
+    font-size: 30px;
 }

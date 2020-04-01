@@ -13,11 +13,13 @@ import { Contact } from '../models/contact';
 })
 export class ApiService {
 
-  private HttpHeaders: HttpHeaders;
+  private httpHeaders: HttpHeaders;
 
   private signinUrl:string = environment.apiBaseUrl + "/api/auth/login";
   private signupUrl:string = environment.apiBaseUrl + "/api/auth/register";
   private getContactsUrl:string = environment.apiBaseUrl + "/api/contacts";
+  private testContactsUrl:string = environment.apiBaseUrl + "/api/contacts/test";
+
   
 
   constructor(
@@ -34,11 +36,13 @@ export class ApiService {
     return this.http.post<UserDetails>(this.signupUrl, model);
   }
 
-  fetchContacts(email:string, token:string): Observable<Contact> {
-    this.HttpHeaders = new HttpHeaders({
+  
+
+  fetchContacts(email:string, token:string): Observable<Contact[]> {
+    this.httpHeaders = new HttpHeaders({
       'Authorization':`Bearer ${token}`
     });
-    return this.http.get<Contact>(this.getContactsUrl + `/${email}`);
+    return this.http.get<Contact[]>(this.getContactsUrl + `/${email}`, {headers: this.httpHeaders});
   }
 
 }

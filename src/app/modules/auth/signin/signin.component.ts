@@ -44,7 +44,7 @@ export class SigninComponent implements OnInit {
       res => {
         console.log(res);
         this.sessionStorageMng.saveUserDetails(res);
-        this.router.navigate(['/contacts']);
+        this.router.navigate(['/contacts/index']);
         this.ngxLoaderService.stop();
       },
       err => {

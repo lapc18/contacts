@@ -49,7 +49,7 @@ export class SignupComponent implements OnInit {
       res => {
         this.sessionStorageMng.saveUserDetails(res);
         this.ngxLoaderService.stop();
-        this.router.navigate(['contacts']);
+        this.router.navigate(['/contacts/index']);
       },
       err => {
         console.log(err);
