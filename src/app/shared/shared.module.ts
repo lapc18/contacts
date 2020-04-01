@@ -3,16 +3,26 @@ import { NavbarComponent } from './../components/navbar/navbar.component';
 import { FooterComponent } from './../components/footer/footer.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 @NgModule({
   declarations: [FooterComponent, NavbarComponent, WelcomeComponent],
   imports: [
-    CommonModule, FormsModule
+    CommonModule, 
+    FormsModule, 
+    ReactiveFormsModule, 
+    NgxUiLoaderModule, 
   ],
-  exports: [FooterComponent, NavbarComponent, WelcomeComponent],
+  exports: [
+    CommonModule,
+    FooterComponent, 
+    NavbarComponent, 
+    WelcomeComponent, 
+    ReactiveFormsModule, 
+    FormsModule,
+    NgxUiLoaderModule,
+  ],
 })
 export class SharedModule { }

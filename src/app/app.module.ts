@@ -6,8 +6,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
-import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -19,8 +19,8 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxUiLoaderModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule,
   ],
   exports: [],
   providers: [ApiService],

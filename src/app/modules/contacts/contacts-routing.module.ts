@@ -1,9 +1,16 @@
+import { AddComponent } from './add/add.component';
+import { EditComponent } from './edit/edit.component';
+import { DetailsComponent } from './details/details.component';
+import { IndexComponent } from './index/index.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ContactsComponent } from './contacts.component';
-
-const routes: Routes = [{ path: '', component: ContactsComponent }];
+const routes: Routes = [
+  { path: '', component: IndexComponent },
+  { path: 'details/:phoneNumber', component: DetailsComponent },
+  { path: 'edit/:phoneNumber', component: EditComponent },
+  { path: 'add', component: AddComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

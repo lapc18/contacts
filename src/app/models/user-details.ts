@@ -1,7 +1,7 @@
 export interface UserDetails {
-    name: String;
-    lastName: String;
-    email: String;
-    profile: String;
-    tkn: String;
+    name: string;
+    lastName: string;
+    email: string;
+    profile: string;
+    tkn: string;
 }
