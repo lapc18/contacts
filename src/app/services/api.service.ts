@@ -6,16 +6,19 @@ import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Contact } from '../models/contact';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private httpOptions: HttpHeaders;
+  private HttpHeaders: HttpHeaders;
 
   private signinUrl:string = environment.apiBaseUrl + "/api/auth/login";
   private signupUrl:string = environment.apiBaseUrl + "/api/auth/register";
+  private getContactsUrl:string = environment.apiBaseUrl + "/api/contacts";
+  
 
   constructor(
     private http: HttpClient,
@@ -29,6 +32,13 @@ export class ApiService {
 
   signup(model: Signup): Observable<UserDetails> {
     return this.http.post<UserDetails>(this.signupUrl, model);
+  }
+
+  fetchContacts(email:string, token:string): Observable<Contact> {
+    this.HttpHeaders = new HttpHeaders({
+      'Authorization':`Bearer ${token}`
+    });
+    return this.http.get<Contact>(this.getContactsUrl + `/${email}`);
   }
 
 }
