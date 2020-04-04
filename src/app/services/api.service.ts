@@ -15,20 +15,19 @@ export class ApiService {
 
   private httpHeaders: HttpHeaders;
 
-  private signinUrl:string = environment.apiBaseUrl + "/api/auth/login";
-  private signupUrl:string = environment.apiBaseUrl + "/api/auth/register";
-  private getContactsUrl:string = environment.apiBaseUrl + "/api/contacts";
-  private testContactsUrl:string = environment.apiBaseUrl + "/api/contacts/test";
+  private signinUrl: string = environment.apiBaseUrl + "/api/auth/login";
+  private signupUrl: string = environment.apiBaseUrl + "/api/auth/register";
+  private contactsUrl: string = environment.apiBaseUrl + "/api/contacts";
+  // private testContactsUrl:string = environment.apiBaseUrl + "/api/contacts/test";
 
-  
+
 
   constructor(
     private http: HttpClient,
-    
+
   ) { }
 
   signin(model: Signin): Observable<UserDetails> {
-    console.log(model); 
     return this.http.post<UserDetails>(this.signinUrl, model);
   }
 
@@ -36,14 +35,33 @@ export class ApiService {
     return this.http.post<UserDetails>(this.signupUrl, model);
   }
 
-  
 
-  fetchContacts(email:string, token:string): Observable<Contact[]> {
-    console.log(email, token);
+  fetchContacts(email: string, token: string): Observable<Contact[]> {
     this.httpHeaders = new HttpHeaders({
-      'Authorization':`Bearer ${token}`
+      'Authorization': `Bearer ${token}`
     });
-    return this.http.get<Contact[]>(this.getContactsUrl + `/${email}`, {headers: this.httpHeaders});
+    return this.http.get<Contact[]>(this.contactsUrl + `/${email}`, { headers: this.httpHeaders });
+  }
+
+  addContact(email: string, token: string, model: Contact): Observable<any> {
+    this.httpHeaders = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<any>(this.contactsUrl + `/${email}`, model, { headers: this.httpHeaders });
+  }
+
+  updateContact(email: string, token: string, model: Contact): Observable<any> {
+    this.httpHeaders = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<any>(this.contactsUrl + `/${email}`, model, { headers: this.httpHeaders });
+  }
+
+  deleteContact(email: string, token: string, id: number): Observable<any> {
+    this.httpHeaders = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete<any>(this.contactsUrl + `/${email}/${id}`, { headers: this.httpHeaders });
   }
 
 }

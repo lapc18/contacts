@@ -5,6 +5,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SessionStorageManager } from 'src/app/classes/session-storage-manager';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-index',
@@ -26,14 +27,14 @@ export class IndexComponent implements OnInit {
     private router: Router
   ) {
 
-    this.isUnathorized = false;
+    this.isUnathorized = this.sessionStorageMng.getToken() === null;
     this.exitsErrorOnResponse = false;
+    this.user = this.sessionStorageMng.getCurrentUser();
 
   }
 
   ngOnInit(): void {
-    this.user = this.sessionStorageMng.getCurrentUser();
-    if (this.user === null || this.sessionStorageMng.getToken() === null) {
+    if (this.user === null || this.isUnathorized) {
       alert('you must to signin');
       this.router.navigate(['auth/signin']);
     } else {
@@ -66,8 +67,7 @@ export class IndexComponent implements OnInit {
   }
 
   onDelete(item: Contact): void {
-
+    console.log(item);
   }
-
 
 }

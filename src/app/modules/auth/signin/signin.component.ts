@@ -13,9 +13,9 @@ import { Router } from '@angular/router';
 export class SigninComponent implements OnInit {
 
 
-  public signinForm:any;
-  public isCredentialsInvalid:boolean;
-  public exitsErrorOnResponse:boolean;
+  public signinForm: any;
+  public isCredentialsInvalid: boolean;
+  public exitsErrorOnResponse: boolean;
 
 
   constructor(
@@ -23,7 +23,7 @@ export class SigninComponent implements OnInit {
     private sessionStorageMng: SessionStorageManager,
     private api: ApiService,
     private router: Router
-  ) { 
+  ) {
 
 
     this.signinForm = new FormGroup({
@@ -40,16 +40,15 @@ export class SigninComponent implements OnInit {
   onSignIn(): void {
     this.ngxLoaderService.start();
     console.log(this.signinForm.value);
-    this.api.signin({email: this.signinForm.value.email, pwd: this.signinForm.value.password}).subscribe(
+    this.api.signin({ email: this.signinForm.value.email, pwd: this.signinForm.value.password }).subscribe(
       res => {
-        console.log(res);
         this.sessionStorageMng.saveUserDetails(res);
         this.router.navigate(['/contacts/index']);
         this.ngxLoaderService.stop();
       },
       err => {
         console.log(err);
-        switch(err.error.status) {
+        switch (err.error.status) {
           case 401: this.isCredentialsInvalid = true; break;
           default: this.exitsErrorOnResponse = false;
         }
