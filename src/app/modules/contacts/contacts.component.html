@@ -12,10 +12,10 @@
     <div class="collapse navbar-collapse pr-5 animated bounceInLeft" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link fa fa-home" routerLink="contacts/index"></a>
+                <a class="nav-link fa fa-home" (click)="gotoIndex()"></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link fa fa-sign-out" data-scroll href="#social"></a>
+                <a class="nav-link fa fa-sign-out" (click)="signOut()"></a>
             </li>
         </ul>
     </div>

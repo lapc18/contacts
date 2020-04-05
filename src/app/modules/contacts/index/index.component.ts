@@ -14,7 +14,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class IndexComponent implements OnInit {
 
-  private isUnathorized: boolean;
+  public isUnathorized: boolean;
   public exitsErrorOnResponse: boolean;
   private user: UserDetails;
   public list: Contact[];
@@ -26,36 +26,30 @@ export class IndexComponent implements OnInit {
     private api: ApiService,
     private router: Router
   ) {
-
-    this.isUnathorized = this.sessionStorageMng.getToken() === null;
     this.exitsErrorOnResponse = false;
+    this.isUnathorized = false;
     this.user = this.sessionStorageMng.getCurrentUser();
-
+    this.ngxLoaderService.start();
+    this.api.fetchContacts(this.user.email, this.user.tkn).subscribe(
+      res => {
+        this.list = res;
+        this.ngxLoaderService.stop();
+      },
+      err => {
+        this.exitsErrorOnResponse = true;
+        console.log(err);
+        switch (err.error.status) {
+          case 401: this.isUnathorized = true; break;
+          default: this.exitsErrorOnResponse = true;
+        }
+        this.ngxLoaderService.stop();
+        this.validateLogin();
+      }
+    );
   }
 
   ngOnInit(): void {
-    if (this.user === null || this.isUnathorized) {
-      alert('you must to signin');
-      this.router.navigate(['auth/signin']);
-    } else {
-      this.ngxLoaderService.start();
-      this.api.fetchContacts(this.user.email, this.user.tkn).subscribe(
-        res => {
-          console.log(res);
-          this.list = res;
-          this.ngxLoaderService.stop();
-        },
-        err => {
-          console.log(err);
-          switch (err.error.status) {
-            case 401: this.isUnathorized = true; break;
-            default: this.exitsErrorOnResponse = false;
-          }
-          this.ngxLoaderService.stop();
-        }
-      );
-    }
-
+    this.validateLogin();
   }
 
   onAdd(): void {
@@ -67,7 +61,28 @@ export class IndexComponent implements OnInit {
   }
 
   onDelete(item: Contact): void {
-    console.log(item);
+    console.log(`Deleting item: ${item}`);
+    const index: number = this.list.indexOf(item);
+    if (index !== -1) {
+      this.list.splice(index, 1);
+    }
+    this.api.deleteContact(this.user.email, this.user.tkn, item.id).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+        alert(err);
+      }
+    );
+    console.log(`Deleted item: ${item} successfully`);
+  }
+
+  validateLogin(): void {
+    if (this.user === null || this.isUnathorized === true) {
+      this.router.navigate(['auth/signin']);
+      alert('you must to signin');
+    }
   }
 
 }

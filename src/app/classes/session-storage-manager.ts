@@ -11,6 +11,9 @@ const USER_TOKEN = "user_token";
     providedIn: 'root'
 })
 export class SessionStorageManager {
+    clear() {
+        sessionStorage.clear();
+    }
 
     saveUserDetails(user: UserDetails): void {
         sessionStorage.setItem(USER_NAME, user.name);

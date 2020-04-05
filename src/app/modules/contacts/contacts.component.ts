@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class ContactsComponent implements OnInit {
 
-  private user:UserDetails;
+  private user: UserDetails;
   public list: Contact[];
 
 
@@ -21,7 +21,7 @@ export class ContactsComponent implements OnInit {
     private ngxLoaderService: NgxUiLoaderService,
     private sessionStorageMng: SessionStorageManager,
     private router: Router
-  ) { 
+  ) {
 
 
   }
@@ -29,11 +29,20 @@ export class ContactsComponent implements OnInit {
   ngOnInit(): void {
     this.ngxLoaderService.start();
     this.user = this.sessionStorageMng.getCurrentUser();
-    if(this.user === null || this.sessionStorageMng.getToken() === null) {
+    if (this.user === null || this.sessionStorageMng.getToken() === null) {
       alert('you must to signin');
       this.router.navigate(['auth/signin']);
-    } 
+    }
     this.ngxLoaderService.stop();
+  }
+
+  gotoIndex(): void {
+    this.router.navigate(['contacts/index']);
+  }
+
+  signOut(): void {
+    this.sessionStorageMng.clear();
+    this.router.navigate(['welcome']);
   }
 
 }

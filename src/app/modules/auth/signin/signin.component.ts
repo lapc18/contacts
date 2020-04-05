@@ -39,7 +39,6 @@ export class SigninComponent implements OnInit {
 
   onSignIn(): void {
     this.ngxLoaderService.start();
-    console.log(this.signinForm.value);
     this.api.signin({ email: this.signinForm.value.email, pwd: this.signinForm.value.password }).subscribe(
       res => {
         this.sessionStorageMng.saveUserDetails(res);
