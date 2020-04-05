@@ -20,7 +20,7 @@
                     <td>{{ item.lastName }}</td>
                     <td class="btn-group" role="group">
                         <button (click)="onDelete(item)" type="button" class="btn btn-outline-dark">Delete</button>
-                        <button type="button" class="btn btn-outline-dark">Edit</button>
+                        <button (click)="onEdit(item)" type="button" class="btn btn-outline-dark">Edit</button>
                         <button type="button" class="btn btn-outline-dark">Details</button>
                     </td>
                 </tr>

@@ -12,8 +12,8 @@ const routes: Routes = [
     component: ContactsComponent,
     children: [
       { path: 'index', component: IndexComponent, },
-      { path: 'details/:phoneNumber', component: DetailsComponent, },
-      { path: 'edit/:phoneNumber', component: EditComponent, },
+      { path: 'details/:id', component: DetailsComponent, },
+      { path: 'edit/:id', component: EditComponent, },
       { path: 'add', component: AddComponent, }
     ]
   },

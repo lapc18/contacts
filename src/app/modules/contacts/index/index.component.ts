@@ -57,7 +57,7 @@ export class IndexComponent implements OnInit {
   }
 
   onEdit(item: Contact): void {
-    this.router.navigate(['contacts/add'], { queryParams: { phoneNumber: item.phoneNumber } });
+    this.router.navigate(['contacts/edit', item.id]);
   }
 
   onDelete(item: Contact): void {
