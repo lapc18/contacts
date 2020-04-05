@@ -1,7 +1,7 @@
 <div id="contacts-index" class="container">
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 p-4">
             <button (click)="onAdd()" class="col-md-6 btn btn-outline-primary">New Contact</button>
         </div>
     </div>
@@ -12,6 +12,7 @@
                 <th>Phone Number</th>
                 <th>Name</th>
                 <th>Lastname</th>
+                <th>Options</th>
             </thead>
             <tbody>
                 <tr *ngFor="let item of list">
@@ -19,9 +20,13 @@
                     <td>{{ item.firstName }}</td>
                     <td>{{ item.lastName }}</td>
                     <td class="btn-group" role="group">
-                        <button (click)="onDelete(item)" type="button" class="btn btn-outline-dark">Delete</button>
-                        <button (click)="onEdit(item)" type="button" class="btn btn-outline-dark">Edit</button>
-                        <button type="button" class="btn btn-outline-dark">Details</button>
+                        <button (click)="onDelete(item)" type="button" class="btn btn-outline-dark">
+                            <span class="fa fa-trash"></span>
+                        </button>
+                        <button (click)="onEdit(item)" type="button" class="btn btn-outline-dark">
+                            <span class="fa fa-edit"></span>
+                        </button>
+                        <!-- <button type="button" class="btn btn-outline-dark">Details</button> -->
                     </td>
                 </tr>
             </tbody>

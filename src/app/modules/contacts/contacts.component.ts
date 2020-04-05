@@ -29,11 +29,11 @@ export class ContactsComponent implements OnInit {
   ngOnInit(): void {
     this.ngxLoaderService.start();
     this.user = this.sessionStorageMng.getCurrentUser();
+    this.ngxLoaderService.stop();
     if (this.user === null || this.sessionStorageMng.getToken() === null) {
       alert('you must to signin');
       this.router.navigate(['auth/signin']);
     }
-    this.ngxLoaderService.stop();
   }
 
   gotoIndex(): void {
@@ -42,7 +42,7 @@ export class ContactsComponent implements OnInit {
 
   signOut(): void {
     this.sessionStorageMng.clear();
-    this.router.navigate(['welcome']);
+    this.router.navigate(['']);
   }
 
 }

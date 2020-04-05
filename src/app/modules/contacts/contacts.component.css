@@ -42,3 +42,7 @@
 nav .fa {
     font-size: 30px;
 }
+
+nav .nav-link:hover {
+    cursor: pointer;
+}
