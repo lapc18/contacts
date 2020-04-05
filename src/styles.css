@@ -1,19 +1,19 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
-
-
-html, 
-body {
+html, body {
     overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
 }
 
-
+footer {
+    overflow-x: hidden;
+    box-sizing: border-box;
+    padding: 0%;
+}
 
 .bg-primary-red {
     background-color: #F50057;
 }
-
 
 .btn-outline-primary {
     color: #F50057 !important;
@@ -28,8 +28,8 @@ body {
 
 .svg-img {
     overflow-x: hidden;
+    padding: 0%;
 }
-
 
 .fa {
     font-size: 100px;
@@ -83,4 +83,9 @@ body {
 
 .text-red {
     color: #F50057;
+}
+
+.container {
+    padding-bottom: 0%;
+    padding-top: 0%;
 }
